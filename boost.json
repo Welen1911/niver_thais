@@ -1,0 +1,22 @@
+{
+    "agents": [
+        "codex",
+        "gemini",
+        "copilot",
+        "opencode"
+    ],
+    "guidelines": true,
+    "mcp": true,
+    "nightwatch_mcp": false,
+    "packages": [
+        "laravel/fortify"
+    ],
+    "sail": false,
+    "skills": [
+        "laravel-best-practices",
+        "fluxui-development",
+        "livewire-development",
+        "tailwindcss-development",
+        "fortify-development"
+    ]
+}
