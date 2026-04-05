@@ -112,16 +112,23 @@ new class extends Component
 
             {{-- Preview --}}
             @if ($photo)
-                <div class="mt-3">
+                <div class="mt-3 max-w-md">
                     <p class="text-xs text-gray-500 mb-1">Preview</p>
-                    <img src="{{ $photo->temporaryUrl() }}"
-                        class="h-40 w-full rounded-xl object-cover border">
+
+                    <div class="w-full h-56 rounded-xl overflow-hidden border bg-gray-100">
+                        <img src="{{ $photo ? $photo->temporaryUrl() : asset('storage/' . $product->photo) }}"
+                            class="w-full h-full object-cover">
+                    </div>
                 </div>
+
             @elseif ($product && $product->photo)
                 <div class="mt-3">
                     <p class="text-xs text-gray-500 mb-1">Imagem atual</p>
-                    <img src="{{ asset('storage/' . $product->photo) }}"
-                        class="h-40 w-full rounded-xl object-cover border">
+
+                    <div class="w-full h-48 rounded-xl overflow-hidden border bg-gray-100">
+                        <img src="{{ asset('storage/' . $product->photo) }}"
+                            class="w-full h-full object-cover">
+                    </div>
                 </div>
             @endif
 

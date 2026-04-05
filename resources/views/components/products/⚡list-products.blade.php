@@ -54,13 +54,17 @@ new class extends Component
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 @forelse ($availableProducts as $product)
-                    <div class="bg-white dark:bg-zinc-900 rounded-xl shadow overflow-hidden flex flex-col">
+                    <div class="bg-white dark:bg-zinc-900 rounded-xl shadow overflow-hidden flex flex-col max-w-sm w-full">
 
                         {{-- IMAGEM --}}
-                       <div class="h-44 w-full overflow-hidden">
+                       <div class="w-full aspect-square overflow-hidden bg-gray-100 dark:bg-zinc-800">
                             @if ($product->photo)
                                 <img src="{{ asset('storage/' . $product->photo) }}"
                                     class="w-full h-full object-cover">
+                            @else
+                                <div class="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                                    Sem imagem
+                                </div>
                             @endif
                         </div>
 
@@ -123,17 +127,17 @@ new class extends Component
         <div>
             <h2 class="text-lg font-semibold mb-3">Indisponíveis</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 @forelse ($unavailableProducts as $product)
-                    <div class="bg-gray-100 dark:bg-zinc-800 rounded-xl shadow overflow-hidden flex flex-col opacity-70">
+                     <div class="bg-white dark:bg-zinc-900 rounded-xl shadow overflow-hidden flex flex-col max-w-sm w-full">
 
                         {{-- IMAGEM --}}
-                        <div class="h-40 w-full bg-gray-200 dark:bg-zinc-700">
+                       <div class="w-full aspect-square overflow-hidden bg-gray-100 dark:bg-zinc-800">
                             @if ($product->photo)
                                 <img src="{{ asset('storage/' . $product->photo) }}"
-                                    class="h-full w-full object-cover grayscale">
+                                    class="w-full h-full object-cover">
                             @else
-                                <div class="h-full w-full flex items-center justify-center text-gray-400 text-sm">
+                                <div class="w-full h-full flex items-center justify-center text-gray-400 text-sm">
                                     Sem imagem
                                 </div>
                             @endif
