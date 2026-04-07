@@ -97,31 +97,19 @@ new class extends Component
     {
         $this->validate();
 
-        $product = Product::with('reservations')->findOrFail($this->modalProductId);
-
-        $reserved  = $product->reservations->sum('quantity');
-        $remaining = $product->stock - $reserved;
-
-        if ($this->quantity > $remaining) {
-            $this->addError('quantity', 'Quantidade maior que o disponível.');
-            return;
-        }
+        $guestName = $this->guestName;
 
         ProductReservation::create([
-            'product_id' => $product->id,
-            'guest_name' => $this->guestName,
+            'product_id' => $this->modalProductId,
+            'guest_name' => $guestName,
             'quantity'   => $this->quantity,
         ]);
 
-        // reset
-        $this->guestName = '';
-        $this->quantity = 1;
-
-        $this->closeModal(); // ← fecha e reseta tudo
+        $this->closeModal();
         $this->loadProducts();
 
         $this->dispatch('toast-success', [
-            'heading' => "Sua reserva foi confirmada!",
+            'heading' => 'Sua reserva foi confirmada!',
             'message' => 'Presente reservado com sucesso! 🎁',
         ]);
     }
