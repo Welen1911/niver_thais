@@ -82,9 +82,40 @@
                 </div>
             </div>
 
-            {{-- PRODUTOS --}}
-            <div class="w-full max-w-6xl px-4">
-                @livewire('products.guest-products')
+            <div
+                x-data="{ tab: 'presentes' }"
+                class="w-full max-w-6xl px-4 mt-6"
+            >
+                {{-- Abas --}}
+                <div class="flex gap-2 mb-6 border-b dark:border-zinc-700">
+                    <button
+                        x-on:click="tab = 'presentes'"
+                        :class="tab === 'presentes'
+                            ? 'border-b-2 border-green-500 text-green-600 font-semibold'
+                            : 'text-gray-500 hover:text-gray-700'"
+                        class="pb-2 px-1 text-sm transition"
+                    >
+                        🎁 Lista de Presentes
+                    </button>
+                    <button
+                        x-on:click="tab = 'pix'"
+                        :class="tab === 'pix'
+                            ? 'border-b-2 border-green-500 text-green-600 font-semibold'
+                            : 'text-gray-500 hover:text-gray-700'"
+                        class="pb-2 px-1 text-sm transition"
+                    >
+                        💸 Contribuir via Pix
+                    </button>
+                </div>
+
+                {{-- Conteúdo --}}
+                <div x-show="tab === 'presentes'">
+                    @livewire('products.guest-products')
+                </div>
+
+                <div x-show="tab === 'pix'">
+                    @livewire('pix-options.guest-pix-options')
+                </div>
             </div>
         </div>
         @include('partials.toast')

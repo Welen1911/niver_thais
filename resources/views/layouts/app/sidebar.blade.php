@@ -17,6 +17,9 @@
                     <flux:sidebar.item icon="archive-box" :href="route('products.index')" :current="request()->routeIs('products.index')" wire:navigate>
                         {{ __('Products') }}
                     </flux:sidebar.item>
+                    <flux:sidebar.item icon="banknotes" :href="route('pixs.index')" :current="request()->routeIs('pixs.index')" wire:navigate>
+                        {{ __('Pix') }}
+                    </flux:sidebar.item>
             </flux:sidebar.nav>
 
             <flux:spacer />
