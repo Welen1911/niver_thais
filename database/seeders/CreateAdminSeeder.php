@@ -14,8 +14,8 @@ class CreateAdminSeeder extends Seeder
     public function run(): void
     {
         User::factory()->create([
-            'name' => 'Thais Almeida',
-            'email' => 'thais@admin.com',
+            'name' => 'Admin',
+            'email' => app('config')->get('app.admin_email', 'admin@teste.com'),
             'password' => bcrypt(app('config')->get('app.admin_password', 'password')),
         ]);
     }

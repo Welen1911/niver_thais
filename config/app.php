@@ -123,6 +123,7 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'admin_email' => env('APP_ADMIN_EMAIL', 'admin@teste.com'),
     'admin_password' => env('APP_ADMIN_PASSWORD', 'password'),
     'pix_key' => env('PIX_KEY'),
 
